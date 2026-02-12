@@ -1,109 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HandyHub</title>
-
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandyHub | Professional Home Services</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <div class="logo">Handy<span>Hub</span></div>
+            <nav class="nav-links">
+                <a href="#">Why Trust Us</a>
+                <a href="#">Products</a>
+                <a href="#">Company</a>
+                <a href="#">Resources</a>
+            </nav>
+            <div class="nav-btns">
+                <button class="btn-text">Log In</button>
+                <button class="btn-emerald">Get Started</button>
+            </div>
+        </div>
+    </header>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <h2 class="logo">HandyHub</h2>
+    <main>
+        <section class="hero container">
+            <div class="hero-header">
+                <span class="trust-badge">⭐ Best Service 4.8 (25k+ Reviews)</span>
+                <h1>Find top-rated certified <br> pro helping hands in your area.</h1>
+                <div class="search-bar">
+                    <input type="text" placeholder="How can we help you?">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="popular-tags">
+                    <span>Popular:</span> House Cleaning, Plumbing, Kitchen Remodeling
+                </div>
+            </div>
 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Services</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
+            <div class="service-cards">
+                <div class="s-card">
+                    <img src="images/handyman.jpg" alt="Handyman">
+                    <div class="s-label">Handyman <i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="s-card active">
+                    <img src="images/plumbing.jpg" alt="Plumbing">
+                    <div class="s-label">Plumbing <i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="s-card">
+                    <img src="images/landscaping.jpg" alt="Landscaping">
+                    <div class="s-label">Landscaping <i class="fas fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <button class="btn-primary">Sign In</button>
-  </header>
-
-
-  <!-- Hero Section -->
-  <section class="hero">
-
-    <div class="hero-text">
-      <h1>Find top-rated certified professionals near you</h1>
-      <p>Easy and reliable way to take care of your home services.</p>
-
-      <div class="search-box">
-        <input type="text" placeholder="Search services..." />
-        <button>Search</button>
-      </div>
-    </div>
-
-    <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" />
-    </div>
-
-  </section>
-
-
-  <!-- Services -->
-  <section class="services">
-
-    <h2>Our Services</h2>
-
-    <div class="service-grid">
-
-      <div class="card">
-        <img src="https://img.icons8.com/color/96/cleaning.png"/>
-        <h3>Cleaning</h3>
-      </div>
-
-      <div class="card">
-        <img src="https://img.icons8.com/color/96/plumbing.png"/>
-        <h3>Plumbing</h3>
-      </div>
-
-      <div class="card">
-        <img src="https://img.icons8.com/color/96/electrical.png"/>
-        <h3>Electrical</h3>
-      </div>
-
-      <div class="card">
-        <img src="https://img.icons8.com/color/96/paint-roller.png"/>
-        <h3>Painting</h3>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- Stats -->
-  <section class="stats">
-
-    <div class="stat">
-      <h2>217,924+</h2>
-      <p>Happy Clients</p>
-    </div>
-
-    <div class="stat">
-      <h2>700+</h2>
-      <p>Professionals</p>
-    </div>
-
-    <div class="stat">
-      <h2>500+</h2>
-      <p>Services</p>
-    </div>
-
-  </section>
-
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 HandyHub. All Rights Reserved.</p>
-  </footer>
-
-
-  <script src="script.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
