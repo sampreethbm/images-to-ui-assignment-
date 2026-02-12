@@ -3,70 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HandyHub | Professional Home Services</title>
+    <title>BDStall | All The Tech You Need</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
     <header class="navbar">
-        <div class="container nav-wrapper">
-            <div class="logo">Handy<span>Hub</span></div>
-            <nav class="nav-links">
-                <a href="#">Why Trust Us</a>
-                <a href="#">Products</a>
-                <a href="#">Company</a>
-                <a href="#">Resources</a>
+        <div class="container nav-container">
+            <div class="logo">BDStall</div>
+            <nav class="nav-links" id="navLinks">
+                <a href="#">Computers</a>
+                <a href="#">Electronics</a>
+                <a href="#">Security</a>
+                <a href="#">Health</a>
             </nav>
-            <div class="nav-btns">
-                <button class="btn-text">Log In</button>
-                <button class="btn-emerald">Get Started</button>
+            <div class="nav-actions">
+                <button class="btn-icon">🔍</button>
+                <div class="menu-toggle" id="mobileMenu">☰</div>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="hero container">
-            <div class="hero-header">
-                <span class="trust-badge">⭐ Best Service 4.8 (25k+ Reviews)</span>
-                <h1>Find top-rated certified <br> pro helping hands in your area.</h1> [cite: 19]
-                <div class="search-bar">
-                    <input type="text" placeholder="How can we help you?">
-                    <button class="search-btn"><i class="fas fa-search"></i></button>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>ALL THE TECH YOU <br> NEED, ALL IN ONE PLACE</h1>
+                    <p>Discover latest gadgets, components, and appliances from top brands at unbeatable prices.</p>
+                    <button class="btn-primary">Shop Now</button>
                 </div>
-                <div class="popular-tags">
-                    <span>Popular:</span> House Cleaning, Plumbing, Kitchen Remodeling
-                </div>
-            </div>
-
-            <div class="service-cards">
-                <div class="s-card" style="background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069')">
-                    <div class="overlay"></div>
-                    <div class="s-label">Handyman <i class="fas fa-arrow-right"></i></div>
-                </div>
-                <div class="s-card active" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070')">
-                    <div class="overlay"></div>
-                    <div class="s-label">Plumbing <i class="fas fa-arrow-right"></i></div> [cite: 29]
-                </div>
-                <div class="s-card" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6954?q=80&w=2070')">
-                    <div class="overlay"></div>
-                    <div class="s-label">Landscaping <i class="fas fa-arrow-right"></i></div>
+                <div class="hero-image">
+                    <img src="images/iphone-hero.png" alt="Latest iPhone Models">
                 </div>
             </div>
         </section>
 
-        <section class="stats container">
-            <div class="stat-item">
-                <h2>1.2 million</h2>
-                <p>Happy Customers</p>
+        <section class="categories container">
+            <h2 class="section-title">Popular Categories</h2>
+            <div class="category-grid">
+                <div class="category-card"><span>💻</span><p>Computer</p></div>
+                <div class="category-card"><span>📺</span><p>Electronics</p></div>
+                <div class="category-card"><span>🛡️</span><p>Security</p></div>
+                <div class="category-card"><span>⌚</span><p>Gadgets</p></div>
+                <div class="category-card"><span>🏥</span><p>Health</p></div>
+                <div class="category-card"><span>🚗</span><p>Car & Tools</p></div>
             </div>
-            <div class="stat-item">
-                <h2>700,000+</h2> [cite: 24]
-                <p>Projects Completed</p>
+        </section>
+
+        <section class="products container">
+            <div class="section-header">
+                <h2 class="section-title">Mobile for All</h2>
+                <a href="#" class="view-all">See All</a>
             </div>
-            <div class="stat-item">
-                <h2>500+</h2> [cite: 25]
-                <p>Expert Professionals</p>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="images/phone1.png" alt="Phone">
+                    <h3>iPhone 15</h3>
+                    <p class="price">$999</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/phone2.png" alt="Phone">
+                    <h3>Galaxy S24</h3>
+                    <p class="price">$899</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/phone3.png" alt="Phone">
+                    <h3>Pixel 8 Pro</h3>
+                    <p class="price">$799</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/phone4.png" alt="Phone">
+                    <h3>Nothing Phone</h3>
+                    <p class="price">$599</p>
+                </div>
             </div>
         </section>
     </main>
