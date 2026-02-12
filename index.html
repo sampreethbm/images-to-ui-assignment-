@@ -3,79 +3,527 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BDStall | Elevate Your Tech</title>
+    <title>Mindful | Mental Wellness</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* --- 1. CORE VARIABLES & RESET --- */
+        :root {
+            --bg-body: #050505;
+            --bg-card: #0f0f0f;
+            --primary: #7c3aed; /* Electric Violet */
+            --primary-glow: rgba(124, 58, 237, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --container: 1200px;
+            --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+            /* Ambient Background Glow */
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 60%, rgba(124, 58, 237, 0.05) 0%, transparent 40%);
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 2. UTILITY CLASSES --- */
+        .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 32px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 8px 20px -6px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -4px var(--primary-glow);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .text-muted { color: var(--text-muted); line-height: 1.6; }
+
+        /* Animation Classes (Used by JS) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--ease-out);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- 3. HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 20px 0;
+            transition: 0.4s;
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px;
+        }
+        .logo-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+        .nav-links a { 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+            color: var(--text-muted); 
+        }
+        .nav-links a:hover { color: white; }
+
+        /* Mobile Hamburger */
+        .menu-toggle { display: none; cursor: pointer; z-index: 101; }
+        .bar { width: 25px; height: 2px; background: white; margin: 6px 0; transition: 0.3s; }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(180deg, #fff 0%, #b0b0b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-img-box {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: visible; /* Allow floating elements to hang out */
+        }
+
+        .hero-main-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            /* Placeholder image */
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover;
+            box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5);
+            /* Subtle breathing animation */
+            animation: breathe 8s ease-in-out infinite;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            position: absolute;
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            animation: float 6s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .gc-top { top: 40px; left: -40px; display: flex; align-items: center; gap: 12px; }
+        .gc-bottom { bottom: 40px; right: -30px; text-align: center; }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+
+        /* --- 5. FEATURES / ABOUT --- */
+        .features { padding: 120px 0; }
+        .feature-container {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .feat-img {
+            height: 550px;
+            background: url('https://images.unsplash.com/photo-1606092195730-5d7b9af1ef4d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover;
+            border-radius: var(--radius-lg);
+            position: relative;
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* --- 6. SERVICES (Cards) --- */
+        .services { padding: 100px 0; background: rgba(255,255,255,0.02); }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.4s var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: #141414;
+            border-color: rgba(124, 58, 237, 0.2);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4);
+        }
+
+        /* Subtle glowing orb inside card on hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.1), transparent 40%);
+            opacity: 0;
+            transition: 0.4s;
+        }
+        .card:hover::before { opacity: 1; }
+
+        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+        .card p { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem; position: relative; z-index: 1; }
+        
+        .link-arrow {
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .link-arrow span { transition: 0.3s; }
+        .card:hover .link-arrow span { transform: translateX(5px); }
+
+        /* --- 7. FOOTER --- */
+        footer { padding: 100px 0 50px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-cta { text-align: center; margin-bottom: 80px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
+        .footer-col h4 { color: white; margin-bottom: 24px; font-size: 1.1rem; }
+        .footer-col a { color: var(--text-muted); display: block; margin-bottom: 12px; font-size: 0.95rem; }
+        .footer-col a:hover { color: var(--primary); }
+
+        /* --- 8. RESPONSIVE --- */
+        @media (max-width: 992px) {
+            :root { --container: 900px; }
+            .hero h1 { font-size: 3rem; }
+            .hero-grid, .feature-container { grid-template-columns: 1fr; gap: 50px; }
+            .hero-img-box { order: 2; height: 400px; margin-top: 30px; }
+            .hero-content { order: 1; text-align: center; }
+            .hero-content .btn { margin: 0 auto; }
+            .glass-card { display: none; } /* Hide floating cards on tablet to prevent overflow */
+            .service-grid { grid-template-columns: repeat(2, 1fr); }
+            .feat-img { order: 2; height: 400px; }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile Nav */
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 0; right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: #111;
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.4s ease;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+            }
+            .nav-links.active { right: 0; }
+            
+            /* Typography Scale */
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            
+            /* Layout */
+            .service-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="glass-nav">
-        <div class="container nav-inner">
-            <div class="brand">BDStall</div>
-            <div class="search-bar-container">
-                <input type="text" placeholder="Search for precision tech...">
-                <button class="search-btn"><i data-lucide="search"></i></button>
-            </div>
-            <div class="nav-utils">
-                <i data-lucide="user"></i>
-                <i data-lucide="shopping-cart"></i>
-                <div class="mobile-toggle"><i data-lucide="menu"></i></div>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <div class="logo-dot"></div> Mindful.
+                </a>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li class="mobile-only"><a href="#" style="color: var(--primary);">Book Now</a></li>
+                </ul>
+
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <a href="#" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Book Now</a>
+                    <div class="menu-toggle" id="mobileMenu">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content reveal">
+                    <div style="display:inline-block; padding: 6px 16px; background: rgba(255,255,255,0.05); border-radius: 50px; font-size: 0.85rem; margin-bottom: 24px; border: 1px solid rgba(255,255,255,0.1); color: #ccc;">
+                        ✨ 2,000+ Lives Changed
+                    </div>
+                    <h1>Revitalize Your Thoughts & Enrich Your Soul.</h1>
+                    <p class="text-muted" style="font-size: 1.15rem; margin-bottom: 32px; max-width: 500px;">
+                        Join a community dedicated to progress. We deliver superior mental wellness tools designed to empower your daily life.
+                    </p>
+                    <a href="#" class="btn btn-primary">Book Appointment</a>
+                </div>
+                
+                <div class="hero-img-box reveal">
+                    <div class="hero-main-img"></div>
+                    <div class="glass-card gc-top">
+                        <div style="display:flex;">
+                            <div style="width:30px; height:30px; background:#555; border-radius:50%; border:2px solid #222;"></div>
+                            <div style="width:30px; height:30px; background:#777; border-radius:50%; border:2px solid #222; margin-left:-10px;"></div>
+                            <div style="width:30px; height:30px; background:#999; border-radius:50%; border:2px solid #222; margin-left:-10px;"></div>
+                        </div>
+                        <div style="font-size:0.8rem; font-weight:600;">Happy Clients</div>
+                    </div>
+                    
+                    <div class="glass-card gc-bottom">
+                        <div style="width:60px; height:60px; background:white; border-radius:8px; margin:0 auto 8px;"></div>
+                        <div style="font-size:0.75rem; color:#ddd;">Scan to App</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
+    </section>
 
-    <main>
-        <section class="hero-lux">
-            <div class="container hero-wrapper">
-                <div class="hero-text">
-                    <span class="eyebrow">Innovation reimagined</span>
-                    <h1>ALL THE TECH YOU NEED, <br><span>ALL IN ONE PLACE.</span></h1>
-                    <p>Curated selection of world-class electronics and computing power.</p>
-                    <button class="cta-lux">Explore Collection</button>
-                </div>
-                <div class="hero-visual">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1000&q=80" alt="iPhone 15 Pro Aesthetic">
-                </div>
-            </div>
-        </section>
-
-        <section class="cat-section container">
-            <h2 class="lux-heading">Popular Categories</h2>
-            <div class="cat-grid">
-                <div class="cat-item"><div class="icon-wrap"><i data-lucide="monitor"></i></div><p>Computer</p></div>
-                <div class="cat-item"><div class="icon-wrap"><i data-lucide="smartphone"></i></div><p>Electronics</p></div>
-                <div class="cat-item"><div class="icon-wrap"><i data-lucide="shield"></i></div><p>Security</p></div>
-                <div class="cat-item"><div class="icon-wrap"><i data-lucide="plane"></i></div><p>Travels</p></div>
-                <div class="cat-item"><div class="icon-wrap"><i data-lucide="stethoscope"></i></div><p>Health</p></div>
-                <div class="cat-item"><div class="icon-wrap"><i data-lucide="bike"></i></div><p>Car & Bike</p></div>
-            </div>
-        </section>
-
-        <section class="prod-section container">
-            <div class="lux-header">
-                <h2 class="lux-heading">Mobile for All</h2>
-                <a href="#" class="view-more">View All <i data-lucide="arrow-right"></i></a>
-            </div>
-            <div class="prod-grid">
-                <div class="lux-card">
-                    <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&w=400&q=80" alt="Phone">
-                    </div>
-                    <div class="card-info">
-                        <h3>iPhone 15 Pro</h3>
-                        <p class="desc">Discover the latest innovation.</p>
-                        <div class="card-footer">
-                            <span class="price">$1,099</span>
-                            <button class="add-btn">+</button>
+    <section class="features" id="about">
+        <div class="container">
+            <div class="feature-container">
+                <div class="feat-img reveal"></div>
+                <div class="feat-content reveal">
+                    <h2 class="section-title">Where Smiles Blossom Into Stories.</h2>
+                    <p class="text-muted" style="margin-bottom: 40px;">
+                        It's not just about tracking issues; it's about centering your well-being. Express yourself freely in a space designed for growth.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div>
+                            <div class="icon-box">🔒</div>
+                            <h3 style="margin-bottom: 8px;">Confidentiality</h3>
+                            <p class="text-muted" style="font-size: 0.9rem;">End-to-end encryption for your peace of mind.</p>
+                        </div>
+                        <div>
+                            <div class="icon-box">♥</div>
+                            <h3 style="margin-bottom: 8px;">Accessibility</h3>
+                            <p class="text-muted" style="font-size: 0.9rem;">Care that reaches you, wherever you are.</p>
                         </div>
                     </div>
                 </div>
-                </div>
-        </section>
-    </main>
+            </div>
+        </div>
+    </section>
 
-    <script src="js/main.js"></script>
-    <script>lucide.createIcons();</script>
+    <section class="services" id="services">
+        <div class="container">
+            <div class="reveal" style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <h2 class="section-title">Unlock Your Inner Health</h2>
+                <p class="text-muted">Explore our specialized tiers designed to meet you where you are in your journey.</p>
+            </div>
+            
+            <div class="service-grid">
+                <div class="card reveal">
+                    <h3>Juniper</h3>
+                    <p>Holistic mental health care connecting the systems and patterns of the mind and body.</p>
+                    <a href="#" class="link-arrow">Learn More <span>→</span></a>
+                </div>
+                <div class="card reveal" style="transition-delay: 100ms;">
+                    <h3>Kin</h3>
+                    <p>Relationship-focused therapy sessions to build stronger connections with loved ones.</p>
+                    <a href="#" class="link-arrow">Learn More <span>→</span></a>
+                </div>
+                <div class="card reveal" style="transition-delay: 200ms;">
+                    <h3>Compound</h3>
+                    <p>An all-in-one wellness solution for families, ensuring everyone grows together.</p>
+                    <a href="#" class="link-arrow">Learn More <span>→</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-cta reveal">
+                <h2 class="section-title">Ready to start?</h2>
+                <a href="#" class="btn btn-primary">Book An Appointment</a>
+            </div>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="margin-bottom:20px; color:white;">Mindful.</a>
+                    <p class="text-muted" style="font-size:0.9rem;">
+                        San Francisco, CA<br>
+                        hello@mindful.com
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#">About</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="#">Therapy</a>
+                    <a href="#">Coaching</a>
+                    <a href="#">Family</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Scroll Reveal Animation
+        // This listens for when elements with class 'reveal' enter the screen
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: Stop observing once revealed
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.15, // Trigger when 15% of element is visible
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 2. Sticky Header Blur Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 3. Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Animate hamburger lines (simple rotation)
+            const bars = menuToggle.querySelectorAll('.bar');
+            if (navLinks.classList.contains('active')) {
+                bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+                bars[1].style.opacity = '0';
+                bars[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+            } else {
+                bars[0].style.transform = 'none';
+                bars[1].style.opacity = '1';
+                bars[2].style.transform = 'none';
+            }
+        });
+    </script>
+
 </body>
 </html>
