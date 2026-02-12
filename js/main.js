@@ -1,34 +1,29 @@
-// Initialize Icons
+// Aesthetic Micro-interactions
 lucide.createIcons();
 
-// Toast Notification Logic
-const toast = document.getElementById('toast');
-
-function showToast(message) {
-    toast.textContent = message;
-    toast.style.opacity = '1';
-    toast.style.transform = 'translateY(0)';
-    
-    setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateY(20px)';
-    }, 3000);
-}
-
-// Add event listeners to product cards
-document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', () => {
-        const name = card.getAttribute('data-name');
-        showToast(`${name} added to your bag.`);
+// Smooth reveal on scroll
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+        }
     });
+}, observerOptions);
+
+document.querySelectorAll('.lux-card, .cat-item').forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(30px)";
+    el.style.transition = "0.8s cubic-bezier(0.2, 0, 0, 1)";
+    observer.observe(el);
 });
 
-// Navbar transparency transition
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('.navbar');
-    if (window.scrollY > 20) {
-        nav.style.borderBottom = '1px solid rgba(0,0,0,0.1)';
-    } else {
-        nav.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
-    }
+// Dynamic Search interaction
+const searchInput = document.querySelector('.search-bar-container input');
+searchInput.addEventListener('focus', () => {
+    document.querySelector('.search-bar-container').style.boxShadow = "0 0 0 4px rgba(255, 107, 0, 0.1)";
+});
+searchInput.addEventListener('blur', () => {
+    document.querySelector('.search-bar-container').style.boxShadow = "none";
 });
