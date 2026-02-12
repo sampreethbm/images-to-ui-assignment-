@@ -1,0 +1,41 @@
+:root {
+    --bg-black: #0b0c0e;
+    --card-bg: #16181b;
+    --emerald: #10b981;
+    --emerald-dark: #059669;
+    --text-white: #ffffff;
+    --text-muted: #9ca3af;
+    --border: rgba(255, 255, 255, 0.08);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg-black); color: var(--text-white); font-family: 'Inter', sans-serif; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+
+/* Polished Navbar */
+.navbar { padding: 25px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(11, 12, 14, 0.8); backdrop-filter: blur(12px); z-index: 100; }
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 24px; font-weight: 700; }
+.logo span { color: var(--emerald); }
+.nav-links a { text-decoration: none; color: var(--text-muted); margin: 0 18px; font-size: 14px; transition: var(--transition); }
+.nav-links a:hover { color: var(--emerald); }
+
+/* Hero Section */
+.hero { text-align: center; padding: 80px 0; }
+.trust-badge { display: inline-block; background: var(--card-bg); padding: 8px 16px; border-radius: 50px; font-size: 13px; color: var(--emerald); border: 1px solid var(--border); margin-bottom: 30px; }
+h1 { font-size: 48px; font-weight: 700; line-height: 1.2; letter-spacing: -1px; margin-bottom: 40px; }
+
+/* Polished Search Bar */
+.search-bar { background: var(--card-bg); max-width: 600px; margin: 0 auto; display: flex; padding: 8px; border-radius: 16px; border: 1px solid var(--border); }
+.search-bar input { background: transparent; border: none; flex: 1; padding: 0 20px; color: white; font-size: 16px; outline: none; }
+.search-btn { background: var(--emerald); border: none; width: 50px; height: 50px; border-radius: 12px; color: white; cursor: pointer; transition: var(--transition); }
+.search-btn:hover { background: var(--emerald-dark); transform: scale(1.05); }
+
+/* Service Grid */
+.service-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+.s-card { background: var(--card-bg); border-radius: 24px; overflow: hidden; position: relative; cursor: pointer; transition: var(--transition); border: 1px solid var(--border); }
+.s-card img { width: 100%; height: 280px; object-fit: cover; opacity: 0.7; transition: var(--transition); }
+.s-label { position: absolute; bottom: 20px; left: 20px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+.s-card:hover img { opacity: 1; transform: scale(1.05); }
+.s-card.active { border-color: var(--emerald); }
