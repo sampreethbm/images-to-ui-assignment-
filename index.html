@@ -3,75 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BDStall | Tech Reimagined</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>BDStall | Elevate Your Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-    <div id="toast" class="toast">Item added to your collection</div>
-
-    <header class="navbar">
-        <div class="container nav-container">
-            <div class="logo">BDStall</div>
-            <nav class="nav-links">
-                <a href="#">Store</a>
-                <a href="#">Mac</a>
-                <a href="#">iPad</a>
-                <a href="#">iPhone</a>
-                <a href="#">Support</a>
-            </nav>
-            <div class="nav-actions">
-                <i data-lucide="search" class="nav-icon"></i>
-                <i data-lucide="shopping-bag" class="nav-icon"></i>
-                <div class="menu-toggle" id="mobileMenu">
-                    <i data-lucide="menu"></i>
-                </div>
+    <nav class="glass-nav">
+        <div class="container nav-inner">
+            <div class="brand">BDStall</div>
+            <div class="search-bar-container">
+                <input type="text" placeholder="Search for precision tech...">
+                <button class="search-btn"><i data-lucide="search"></i></button>
+            </div>
+            <div class="nav-utils">
+                <i data-lucide="user"></i>
+                <i data-lucide="shopping-cart"></i>
+                <div class="mobile-toggle"><i data-lucide="menu"></i></div>
             </div>
         </div>
-    </header>
+    </nav>
 
     <main>
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <h1>ALL THE TECH YOU NEED. <br><span class="faded">ALL IN ONE PLACE.</span></h1>
-                    <p>Designed for the ambitious. Engineered for the future.</p>
-                    <div class="hero-btns">
-                        <button class="btn-primary">Buy</button>
-                        <a href="#" class="btn-link">Learn more ></a>
+        <section class="hero-lux">
+            <div class="container hero-wrapper">
+                <div class="hero-text">
+                    <span class="eyebrow">Innovation reimagined</span>
+                    <h1>ALL THE TECH YOU NEED, <br><span>ALL IN ONE PLACE.</span></h1>
+                    <p>Curated selection of world-class electronics and computing power.</p>
+                    <button class="cta-lux">Explore Collection</button>
+                </div>
+                <div class="hero-visual">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1000&q=80" alt="iPhone 15 Pro Aesthetic">
+                </div>
+            </div>
+        </section>
+
+        <section class="cat-section container">
+            <h2 class="lux-heading">Popular Categories</h2>
+            <div class="cat-grid">
+                <div class="cat-item"><div class="icon-wrap"><i data-lucide="monitor"></i></div><p>Computer</p></div>
+                <div class="cat-item"><div class="icon-wrap"><i data-lucide="smartphone"></i></div><p>Electronics</p></div>
+                <div class="cat-item"><div class="icon-wrap"><i data-lucide="shield"></i></div><p>Security</p></div>
+                <div class="cat-item"><div class="icon-wrap"><i data-lucide="plane"></i></div><p>Travels</p></div>
+                <div class="cat-item"><div class="icon-wrap"><i data-lucide="stethoscope"></i></div><p>Health</p></div>
+                <div class="cat-item"><div class="icon-wrap"><i data-lucide="bike"></i></div><p>Car & Bike</p></div>
+            </div>
+        </section>
+
+        <section class="prod-section container">
+            <div class="lux-header">
+                <h2 class="lux-heading">Mobile for All</h2>
+                <a href="#" class="view-more">View All <i data-lucide="arrow-right"></i></a>
+            </div>
+            <div class="prod-grid">
+                <div class="lux-card">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&w=400&q=80" alt="Phone">
                     </div>
-                </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80" alt="iPhone 15 Pro">
-                </div>
-            </div>
-        </section>
-
-        <section class="categories container">
-            <h2 class="section-title">Popular Categories</h2>
-            <div class="category-grid">
-                <div class="category-card"><i data-lucide="laptop"></i><p>Computer</p></div>
-                <div class="category-card"><i data-lucide="smartphone"></i><p>Mobile</p></div>
-                <div class="category-card"><i data-lucide="shield-check"></i><p>Security</p></div>
-                <div class="category-card"><i data-lucide="plane"></i><p>Travel</p></div>
-                <div class="category-card"><i data-lucide="heart-pulse"></i><p>Health</p></div>
-                <div class="category-card"><i data-lucide="car"></i><p>Car & Bike</p></div>
-            </div>
-        </section>
-
-        <section class="products container">
-            <div class="section-header">
-                <h2 class="section-title">Mobile for All</h2>
-                <a href="#" class="view-all">See all models ></a>
-            </div>
-            <div class="product-grid">
-                <div class="product-card" data-name="iPhone 15 Pro">
-                    <span class="badge">New</span>
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" alt="iPhone 15 Pro">
-                    <h3>iPhone 15 Pro</h3>
-                    <p class="price">From $999</p>
+                    <div class="card-info">
+                        <h3>iPhone 15 Pro</h3>
+                        <p class="desc">Discover the latest innovation.</p>
+                        <div class="card-footer">
+                            <span class="price">$1,099</span>
+                            <button class="add-btn">+</button>
+                        </div>
+                    </div>
                 </div>
                 </div>
         </section>
