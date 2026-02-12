@@ -1,24 +1,16 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Scroll-reveal effect
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-            }
-        });
-    }, { threshold: 0.1 });
+// Mobile Menu Toggle
+const mobileMenu = document.getElementById('mobileMenu');
+const navLinks = document.getElementById('navLinks');
 
-    document.querySelectorAll('.s-card, h1, .search-bar').forEach(el => {
-        el.classList.add('reveal-init');
-        observer.observe(el);
-    });
+mobileMenu.addEventListener('click', () => {
+    // Basic toggle logic for mobile responsiveness
+    navLinks.classList.toggle('active');
+    mobileMenu.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+});
 
-    // 2. Active Card Toggle
-    const cards = document.querySelectorAll('.s-card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            cards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-        });
+// Button Click Interactions
+document.querySelectorAll('.btn-primary').forEach(button => {
+    button.addEventListener('click', () => {
+        alert('Thank you for your interest! This feature is coming soon.');
     });
 });
