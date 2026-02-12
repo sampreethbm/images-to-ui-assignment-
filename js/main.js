@@ -1,40 +1,34 @@
-// Mobile Menu Toggle logic
-const mobileMenu = document.getElementById('mobileMenu');
-const navLinks = document.getElementById('navLinks');
+// Initialize Icons
+lucide.createIcons();
 
-mobileMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    // Simple alert if menu isn't styled yet for mobile
-    if(window.innerWidth < 768) {
-        alert("Mobile menu clicked! In a production environment, this would open a side drawer.");
-    }
-});
-
-// Toast Notification System 
+// Toast Notification Logic
 const toast = document.getElementById('toast');
 
 function showToast(message) {
     toast.textContent = message;
-    toast.classList.add('show');
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+    
     setTimeout(() => {
-        toast.classList.remove('show');
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(20px)';
     }, 3000);
 }
 
-// Product Interaction [cite: 6]
+// Add event listeners to product cards
 document.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('click', () => {
-        const productName = card.getAttribute('data-name');
-        showToast(`${productName} added to cart!`);
+        const name = card.getAttribute('data-name');
+        showToast(`${name} added to your bag.`);
     });
 });
 
-// Navbar Scroll Effect
+// Navbar transparency transition
 window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.05)';
+    const nav = document.querySelector('.navbar');
+    if (window.scrollY > 20) {
+        nav.style.borderBottom = '1px solid rgba(0,0,0,0.1)';
     } else {
-        navbar.style.boxShadow = 'none';
+        nav.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
     }
 });
