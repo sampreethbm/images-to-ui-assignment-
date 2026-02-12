@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BDStall | All The Tech You Need</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>BDStall | Tech Reimagined</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-    <div id="toast" class="toast">Added to cart!</div>
+    <div id="toast" class="toast">Item added to your collection</div>
 
     <header class="navbar">
         <div class="container nav-container">
             <div class="logo">BDStall</div>
-            <nav class="nav-links" id="navLinks">
-                <a href="#">Computers</a> 
-                <a href="#">Electronics</a> 
-                <a href="#">Security</a>
-                <a href="#">Health</a> 
+            <nav class="nav-links">
+                <a href="#">Store</a>
+                <a href="#">Mac</a>
+                <a href="#">iPad</a>
+                <a href="#">iPhone</a>
+                <a href="#">Support</a>
             </nav>
             <div class="nav-actions">
-                <button class="btn-icon">🔍</button>
-                <div class="menu-toggle" id="mobileMenu">☰</div>
+                <i data-lucide="search" class="nav-icon"></i>
+                <i data-lucide="shopping-bag" class="nav-icon"></i>
+                <div class="menu-toggle" id="mobileMenu">
+                    <i data-lucide="menu"></i>
+                </div>
             </div>
         </div>
     </header>
@@ -31,58 +36,48 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-content">
-                    <h1>ALL THE TECH YOU <br> NEED, ALL IN ONE PLACE</h1> [cite: 11, 12]
-                    <p>Discover latest gadgets, components, and appliances from top brands at unbeatable prices.</p>
-                    <button class="btn-primary">Shop Now</button>
+                    <h1>ALL THE TECH YOU NEED. <br><span class="faded">ALL IN ONE PLACE.</span></h1>
+                    <p>Designed for the ambitious. Engineered for the future.</p>
+                    <div class="hero-btns">
+                        <button class="btn-primary">Buy</button>
+                        <a href="#" class="btn-link">Learn more ></a>
+                    </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80" alt="Latest iPhone 15 Pro">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80" alt="iPhone 15 Pro">
                 </div>
             </div>
         </section>
 
         <section class="categories container">
-            <h2 class="section-title">Popular Categories</h2> [cite: 13]
+            <h2 class="section-title">Popular Categories</h2>
             <div class="category-grid">
-                <div class="category-card"><span>💻</span><p>Computer</p></div>
-                <div class="category-card"><span>📺</span><p>Electronics</p></div>
-                <div class="category-card"><span>🛡️</span><p>Security</p></div>
-                <div class="category-card"><span>⌚</span><p>Gadgets</p></div>
-                <div class="category-card"><span>🏥</span><p>Health</p></div>
-                <div class="category-card"><span>🚗</span><p>Car & Tools</p></div>
+                <div class="category-card"><i data-lucide="laptop"></i><p>Computer</p></div>
+                <div class="category-card"><i data-lucide="smartphone"></i><p>Mobile</p></div>
+                <div class="category-card"><i data-lucide="shield-check"></i><p>Security</p></div>
+                <div class="category-card"><i data-lucide="plane"></i><p>Travel</p></div>
+                <div class="category-card"><i data-lucide="heart-pulse"></i><p>Health</p></div>
+                <div class="category-card"><i data-lucide="car"></i><p>Car & Bike</p></div>
             </div>
         </section>
 
         <section class="products container">
             <div class="section-header">
-                <h2 class="section-title">Mobile for All</h2> [cite: 14]
-                <a href="#" class="view-all">View All</a>
+                <h2 class="section-title">Mobile for All</h2>
+                <a href="#" class="view-all">See all models ></a>
             </div>
             <div class="product-grid">
                 <div class="product-card" data-name="iPhone 15 Pro">
+                    <span class="badge">New</span>
                     <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" alt="iPhone 15 Pro">
                     <h3>iPhone 15 Pro</h3>
-                    <p class="price">$1,099</p>
+                    <p class="price">From $999</p>
                 </div>
-                <div class="product-card" data-name="MacBook Air M3">
-                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=400&q=80" alt="MacBook Air M3">
-                    <h3>MacBook Air M3</h3>
-                    <p class="price">$1,299</p>
                 </div>
-                <div class="product-card" data-name="Sony WH-1000XM5">
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80" alt="Sony Headphones">
-                    <h3>Sony WH-1000XM5</h3>
-                    <p class="price">$349</p>
-                </div>
-                <div class="product-card" data-name="Apple Watch Ultra">
-                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" alt="Apple Watch Ultra">
-                    <h3>Apple Watch Ultra</h3>
-                    <p class="price">$799</p>
-                </div>
-            </div>
         </section>
     </main>
 
     <script src="js/main.js"></script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
